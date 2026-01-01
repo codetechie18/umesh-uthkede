@@ -40,11 +40,14 @@ function About() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="bg-gradient-to-br from-gray-100 to-gray-200 rounded-lg p-8 h-96 flex items-center justify-center">
-              <p className="text-gray-700 text-xl font-semibold text-center">
-                [Leader Photo Placeholder]
-              </p>
-            </div>
+            <div className="rounded-lg p-4 h-auto overflow-hidden">
+  <img
+    src="/umeshbhau.jpeg"
+    alt="Leader"
+    className="w-full h-96 object-cover rounded-lg"
+  />
+</div>
+
             <div>
               <h2 className="text-4xl font-bold text-gray-900 mb-6">Our Leadership</h2>
               <p className="text-lg text-gray-600 mb-4 leading-relaxed">

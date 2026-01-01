@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  animation: fade 15s infinite;
+  opacity: 0;
+}
+
+.animation-delay-5 {
+  animation-delay: 5s;
+}
+
+.animation-delay-10 {
+  animation-delay: 10s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  33% {
+    opacity: 1;
+  }
+  43% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}

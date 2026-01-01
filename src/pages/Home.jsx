@@ -27,33 +27,51 @@ function Home() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-              Building a Better Tomorrow
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
-              A vision for inclusive growth, transparent governance, and a prosperous future for every citizen
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/about"
-                className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
-              >
-                Learn More
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                to="/policies"
-                className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
-              >
-                Our Policies
-              </Link>
-            </div>
+      <section className="relative h-screen overflow-hidden text-white">
+      
+      {/* Background Images */}
+      <div className="absolute inset-0">
+        <div className="hero-bg bg-[url('/hero/mns.png')]" />
+        <div className="hero-bg bg-[url('/hero/bg2.jpeg')] animation-delay-5" />
+        <div className="hero-bg bg-[url('/hero/bg3.jpeg')] animation-delay-10" />
+        <div className="hero-bg bg-[url('/hero/bg4.jpeg')] animation-delay-15" />
+        <div className="hero-bg bg-[url('/hero/bg5.jpeg')] animation-delay-20" />
+
+      </div>
+
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      {/* Content */}
+      <div className="relative z-10 flex items-center justify-center h-full">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+            Building a Better Tomorrow
+          </h1>
+
+          <p className="text-xl md:text-2xl mb-8 text-blue-100 max-w-3xl mx-auto">
+            A vision for inclusive growth, transparent governance, and a prosperous future for every citizen
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/about"
+              className="inline-flex items-center justify-center bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition"
+            >
+              View More
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+
+            <Link
+              to="/gallery"
+              className="inline-flex items-center justify-center border-2 border-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition"
+            >
+               Gallery
+            </Link>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -95,24 +113,27 @@ function Home() {
                 Through transparent governance and inclusive decision-making, we are committed
                 to building a society that reflects the aspirations of all its people.
               </p>
-              <Link
+              {/* <Link
                 to="/achievements"
                 className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700"
               >
                 View Our Achievements
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
+              </Link> */}
             </div>
-            <div className="bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg p-8 h-96 flex items-center justify-center">
-              <p className="text-blue-800 text-xl font-semibold text-center">
-                [Vision Image Placeholder]
-              </p>
-            </div>
+           <div className=" rounded-lg p-4 h-96 overflow-hidden">
+  <img
+    src="/hero/vision.jpeg"
+    alt="Our Vision"
+    className="w-full h-full object-cover rounded-lg"
+  />
+</div>
+
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-blue-600 text-white">
+      {/* <section className="py-20 bg-blue-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">Stay Informed</h2>
           <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
@@ -126,7 +147,7 @@ function Home() {
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

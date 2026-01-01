@@ -1,41 +1,90 @@
 import { Mail, Phone, MapPin, Send, Facebook, Twitter, Instagram, Youtube } from 'lucide-react';
 import { useState } from 'react';
+import emailjs from 'emailjs-com'
+
 
 function Contact() {
+const [showSuccess, setShowSuccess] = useState(false)
+const [showError, setShowError] = useState(false)
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: '',
-  });
+  })
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('This is a static form. No data is being submitted or stored.');
-  };
+    e.preventDefault()
+
+    const serviceID = 'service_elg2sdf'
+    const adminTemplateID = 'template_169hgko'
+    const userTemplateID = 'template_seiks7c'
+    const publicKey = 'Z3PtqoK38CmemCmDp'
+
+    // 1️⃣ ADMIN MAIL
+    emailjs
+      .send(serviceID, adminTemplateID, {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+      }, publicKey)
+
+      .then(() => {
+        // 2️⃣ USER AUTO REPLY
+        return emailjs.send(serviceID, userTemplateID, {
+          name: formData.name,
+          email: formData.email,
+        }, publicKey)
+      })
+
+     .then(() => {
+  // ✅ SUCCESS POPUP
+  setShowSuccess(true)
+
+  setFormData({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  })
+
+  // ⏳ 2 sec baad HOME redirect
+  setTimeout(() => {
+    window.location.href = 'https://umeshutkhede.in/'
+  }, 2000)
+})
+
+.catch((error) => {
+  console.error('EmailJS Error:', error)
+  setShowError(true)
+})
+
+  }
 
   const contactInfo = [
     {
       icon: <MapPin className="h-6 w-6 text-blue-600" />,
       title: 'Office Address',
-      details: ['123 Government Building', 'Capital City, State 12345'],
+      details: ['Anmol Nagar, Wathoda Layout', 'Nagpur, Maharashtra, 440034'],
     },
     {
       icon: <Phone className="h-6 w-6 text-blue-600" />,
       title: 'Phone',
-      details: ['+1 (555) 123-4567', '+1 (555) 987-6543'],
+      details: ['+91 97676 29154', '+91 99224 62263'],
     },
     {
       icon: <Mail className="h-6 w-6 text-blue-600" />,
       title: 'Email',
-      details: ['info@politicalvision.gov', 'contact@politicalvision.gov'],
+      details: [ 'umesh@umeshutkhede.in'],
     },
   ];
 
@@ -95,33 +144,21 @@ function Contact() {
                 <h3 className="text-xl font-bold text-gray-900 mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="#"
+                    href="https://www.facebook.com/profile.php?id=61586059582183"
                     className="bg-white p-3 rounded-full shadow-md hover:shadow-lg hover:bg-blue-50 transition-all"
                     aria-label="Facebook"
                   >
                     <Facebook className="h-6 w-6 text-blue-600" />
                   </a>
+                 
                   <a
-                    href="#"
-                    className="bg-white p-3 rounded-full shadow-md hover:shadow-lg hover:bg-blue-50 transition-all"
-                    aria-label="Twitter"
-                  >
-                    <Twitter className="h-6 w-6 text-blue-400" />
-                  </a>
-                  <a
-                    href="#"
+                    href="https://www.instagram.com/umesh_utkhede_mns_/"
                     className="bg-white p-3 rounded-full shadow-md hover:shadow-lg hover:bg-pink-50 transition-all"
                     aria-label="Instagram"
                   >
                     <Instagram className="h-6 w-6 text-pink-600" />
                   </a>
-                  <a
-                    href="#"
-                    className="bg-white p-3 rounded-full shadow-md hover:shadow-lg hover:bg-red-50 transition-all"
-                    aria-label="YouTube"
-                  >
-                    <Youtube className="h-6 w-6 text-red-600" />
-                  </a>
+                 
                 </div>
               </div>
             </div>
@@ -196,6 +233,45 @@ function Contact() {
                   <Send className="h-5 w-5 mr-2" />
                   Send Message
                 </button>
+
+                {showSuccess && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div className="bg-white rounded-lg shadow-xl p-6 w-[90%] max-w-md text-center">
+      <h2 className="text-xl font-bold text-green-600 mb-3">
+        Form Submitted Successfully
+      </h2>
+      <p className="text-gray-600 mb-4">
+        Thank you for contacting us.  
+        We will reach out to you soon.
+      </p>
+      <p className="text-sm text-gray-400">
+        Redirecting to home page...
+      </p>
+    </div>
+  </div>
+)}
+
+
+{showError && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
+    <div className="bg-white rounded-lg shadow-xl p-6 w-[90%] max-w-md text-center">
+      <h2 className="text-xl font-bold text-red-600 mb-3">
+        Submission Failed
+      </h2>
+      <p className="text-gray-600 mb-6">
+        Something went wrong while sending your message.
+        Please try again.
+      </p>
+      <button
+        onClick={() => setShowError(false)}
+        className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700 transition"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+)}
+
 
                 <p className="text-sm text-gray-500 mt-4 text-center">
                   Note: This is a static form for display purposes only. No data is collected.

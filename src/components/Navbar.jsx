@@ -8,9 +8,9 @@ function Navbar() {
   const navLinks = [
     { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
-    { name: 'Policies', path: '/policies' },
-    { name: 'Achievements', path: '/achievements' },
-    { name: 'News', path: '/news' },
+    // { name: 'Policies', path: '/policies' },
+    // { name: 'Achievements', path: '/achievements' },
+    // { name: 'News', path: '/news' },
     { name: 'Gallery', path: '/gallery' },
     { name: 'Contact', path: '/contact' },
   ];
@@ -19,10 +19,14 @@ function Navbar() {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center space-x-2">
-            <Flag className="h-8 w-8 text-blue-600" />
-            <span className="text-xl font-bold text-gray-900">Political Vision</span>
-          </Link>
+          <Link to="/" className="flex items-center">
+  <img
+    src="/logo.png"
+    alt="Political Vision Logo"
+    className="h-10 w-auto object-contain"
+  />
+</Link>
+
 
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (

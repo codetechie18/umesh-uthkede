@@ -2,67 +2,52 @@ import { Image } from 'lucide-react';
 
 function Gallery() {
   const galleryImages = [
-    {
-      category: 'Community Events',
-      title: 'Town Hall Meeting',
-      description: 'Engaging with citizens to discuss local issues and policy priorities',
-    },
-    {
-      category: 'Infrastructure',
-      title: 'Bridge Inauguration',
-      description: 'Opening ceremony of new infrastructure connecting rural communities',
-    },
-    {
-      category: 'Education',
-      title: 'School Visit',
-      description: 'Interacting with students and teachers at modernized public school',
-    },
-    {
-      category: 'Healthcare',
-      title: 'Health Center Launch',
-      description: 'Inauguration of new primary healthcare facility in rural area',
-    },
-    {
-      category: 'Environment',
-      title: 'Tree Plantation Drive',
-      description: 'Community participation in green city initiative',
-    },
-    {
-      category: 'Public Service',
-      title: 'Relief Distribution',
-      description: 'Providing assistance to families affected by natural disaster',
-    },
-    {
-      category: 'Youth Programs',
-      title: 'Skill Training Workshop',
-      description: 'Young professionals learning new technologies and industry skills',
-    },
-    {
-      category: 'Agriculture',
-      title: 'Farmer Support Program',
-      description: 'Meeting with farmers to discuss agricultural policies and support',
-    },
-    {
-      category: 'Women Empowerment',
-      title: 'Entrepreneurship Program',
-      description: 'Women business owners receiving training and financial support',
-    },
-    {
-      category: 'Cultural Events',
-      title: 'Festival Celebration',
-      description: 'Participating in local cultural celebrations with community',
-    },
-    {
-      category: 'Technology',
-      title: 'Digital Literacy Program',
-      description: 'Launching computer training centers in underserved areas',
-    },
-    {
-      category: 'Sports',
-      title: 'Youth Sports Initiative',
-      description: 'Inaugurating new sports facilities for young athletes',
-    },
-  ];
+  {
+    category: 'Community Events',
+    title: 'Town Hall Meeting',
+    description: 'Engaging with citizens to discuss local issues and policy priorities',
+    image: '/hero/bg2.jpeg',
+  },
+  {
+    category: 'Infrastructure',
+   title: 'Jan Morcha',
+description: 'Citizens coming together to raise voices on key public issues.',
+
+    image: '/gallery/img2.jpeg',
+  },
+  {
+   category: 'Public Welfare',
+title: 'Citizen Facilities',
+description: 'Strengthening basic facilities to support quality living for all.',
+
+    image: '/gallery/img3.jpeg',
+  },
+  {
+    category: 'Identity & Trust Gap',
+    title: 'Public Identity',
+    description: 'Lack of a clear and consistent visual identity has created confusion among citizens, making it harder to recognize initiatives and trust official communications.',
+    image: '/gallery/img1.jpeg',
+  },
+  {
+    category: 'Public Service',
+    title: 'Relief Distribution',
+    description: 'Providing assistance to families affected by natural disaster',
+    image: '/hero/bg5.jpeg',
+  },
+  {
+    category: 'Youth Programs',
+    title: 'Skill Training Workshop',
+    description: 'Young professionals learning new technologies and industry skills',
+    image: '/gallery/img4.jpeg',
+  },
+  // {
+  //   category: 'Agriculture',
+  //   title: 'Farmer Support Program',
+  //   description: 'Meeting with farmers to discuss agricultural policies and support',
+  //   image: '/gallery/agriculture.jpg',
+  // },
+]
+
 
   return (
     <div className="min-h-screen">
@@ -85,10 +70,15 @@ function Gallery() {
                 key={index}
                 className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow group"
               >
-                <div className="relative aspect-video bg-gradient-to-br from-blue-100 to-blue-200 flex items-center justify-center overflow-hidden">
-                  <Image className="h-16 w-16 text-blue-400 group-hover:scale-110 transition-transform" />
-                  <div className="absolute inset-0 bg-blue-600 bg-opacity-0 group-hover:bg-opacity-10 transition-all"></div>
-                </div>
+                <div className="relative aspect-video overflow-hidden">
+  <img
+    src={item.image}
+    alt={item.title}
+    className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
+  />
+  <div className="absolute inset-0 bg-blue-900/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+</div>
+
                 <div className="p-6">
                   <span className="inline-block px-3 py-1 bg-blue-100 text-blue-600 text-xs font-semibold rounded-full mb-3">
                     {item.category}
